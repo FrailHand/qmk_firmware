@@ -17,17 +17,9 @@ jobs:
       fail-fast: false
       matrix:
         keyboard:
-          - ergodox_ez
-          - ergodox_ez/shine
-          - ergodox_ez/glow
           - moonlander
-          - planck/ez
-          - planck/ez/glow
-          - voyager
-          - voyager/gd32
         keymap:
-          - default
-          - oryx
+          - fm-control
 
     steps:
     - name: Checkout QMK Firmware
@@ -41,3 +33,9 @@ jobs:
       id: build
       run: |
         qmk compile -kb ${{ matrix.keyboard}} -km ${{ matrix.keymap }}
+
+    - name: Archive binary
+        uses: actions/upload-artifact@v3
+        with:
+          name: fm-control binary
+          path: moonlander_fm-control.bin
