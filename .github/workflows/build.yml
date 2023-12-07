@@ -35,7 +35,7 @@ jobs:
         qmk compile -kb ${{ matrix.keyboard}} -km ${{ matrix.keymap }}
 
     - name: Archive binary
-        uses: actions/upload-artifact@v3
-        with:
-          name: fm-control binary
-          path: moonlander_fm-control.bin
+      uses: actions/upload-artifact@v3
+      with:
+        name: fm-control binary
+        path: moonlander_fm-control.bin
